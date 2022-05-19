@@ -12,8 +12,11 @@
     {% endblock %}
 
 </head>
-<body style="background: black; text-align:center ">
-
+<body class="bg-black" style="text-align:center; color: red;">
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+    
     {% block body %}
     {% endblock %}
 
