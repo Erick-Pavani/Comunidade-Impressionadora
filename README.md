@@ -1,0 +1,9 @@
+# Site comunidade Impressionadora
+## Projeto de uma rede social para alunos do curso Python Impressionador da Hashtag Treinamentos
+
+### Tecnologias usadas:
+- HTML5
+- CSS3
+- JAVASCRIPT
+- BOOTSTRAP
+- PYTHON (FLASK)
