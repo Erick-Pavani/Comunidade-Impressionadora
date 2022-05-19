@@ -4,6 +4,6 @@
 ### Tecnologias usadas:
 - HTML5
 - CSS3
-- JAVASCRIPT
-- BOOTSTRAP
-- PYTHON (FLASK)
+- Javascript
+- Bootstrap
+- Python (Flask)
