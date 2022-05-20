@@ -1,7 +1,7 @@
 # Site Comunidade Impressionadora
 ## Projeto de uma rede social para alunos do curso Python Impressionador da Hashtag Treinamentos
 
-## Tecnologias usadas:
+### Tecnologias usadas:
 ### Front - End:
 - HTML5
 - CSS3
