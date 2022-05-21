@@ -1,6 +1,7 @@
 from flask import render_template, url_for, redirect, request, flash
-from comunidadeimpressionadora import app
+from comunidadeimpressionadora import app, database, bcrypt
 from comunidadeimpressionadora.forms import FormLogin, FormCriarConta
+from comunidadeimpressionadora.models import Usuario
 
 #------------------------------ Flask Routes -----------------------
 
@@ -34,6 +35,10 @@ def login():
     
     if form_criar_conta.validate_on_submit() and 'botao_criar_conta' in request.form:
         flash(f'Conta criada com sucesso usando o email {form_criar_conta.email.data}', 'alert-success')
+        senha_crypt = bcrypt.generate_password_hash('form_criar_conta.senha.data')
+        usuario = Usuario(username = form_criar_conta.username.data, email = form_criar_conta.email.data, senha = senha_crypt)
+        database.session.add(usuario)
+        database.session.commit()
         
         return redirect(url_for('home'))
     
