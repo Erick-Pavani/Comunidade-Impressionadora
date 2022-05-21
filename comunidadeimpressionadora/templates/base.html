@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/main.css" type="text/css">
     <script>
 
-        function removeMensagem(){
-    
-            setTimeout(function(){ 
-    
+        function removeMensagem() {
+
+            setTimeout(function () {
+
                 var msg = document.getElementById("msg");
-    
-                msg.parentNode.removeChild(msg);   
-    
+
+                msg.parentNode.removeChild(msg);
+
             }, 5000);
-    
-            }
-    
+
+        }
+
         document.onreadystatechange = () => {
-    
-        if (document.readyState === 'complete') {
-    
-        removeMensagem(); 
-    
+
+            if (document.readyState === 'complete') {
+
+                removeMensagem();
+
             }
-    
+
         };
-    
+
     </script>
     <title>Comunidade Impressionadora</title>
 
@@ -37,21 +40,22 @@
     {% endblock %}
 
 </head>
+
 <body class="bg-black text-primary">
     <header>
         {% include 'navbar.html' %}
     </header>
-    
+
     <main>
         <div class="container" style="text-align: center;">
             {% with mensagens = get_flashed_messages(with_categories=True) %}
-                {% if mensagens %}
-                    {% for categoria, mensagem in mensagens %}
-                        <div class="alert {{ categoria }} mt-2" id="msg">
-                            {{ mensagem }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
+            {% if mensagens %}
+            {% for categoria, mensagem in mensagens %}
+            <div class="alert {{ categoria }} mt-2" id="msg">
+                {{ mensagem }}
+            </div>
+            {% endfor %}
+            {% endif %}
             {% endwith %}
         </div>
         <div class="container mt-3">
@@ -59,12 +63,12 @@
             {% endblock %}
         </div>
     </main>
-    
+
 
     <!-- Booststrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
-
-
-
