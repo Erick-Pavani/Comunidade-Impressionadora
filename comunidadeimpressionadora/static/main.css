@@ -1,13 +1,30 @@
-
-.card{
-    width: 400px;
-    border: none;
+.cardprofiles{
     border-radius: 10px;
     background-color: #403d3d;
+    height: 100%; 
+    min-height: 430px;
 }
 
-.stats{
-    background: #403d3d!important;
+.cardpoststitle{
+    text-align: center!important;
+    margin-right: 15%;
+}
+
+.cardpostsdate{
+    text-align: center!important;
+    margin-right: 15%;
+}
+
+.cardposts{
+    border-radius: 10px;
+    background-color: #403d3d;
+    width: 65%;
+    min-height: 120px;
+    text-align: left;
+}
+
+.comtitle{
+    margin-left: 185px!important;
 }
 
 .points{
@@ -18,3 +35,131 @@
     font-weight:500;
 }
 
+.titulos{
+    margin-top: 10vh;
+}
+
+.htlogin{
+    margin-top: 25vh;
+}
+
+.htconta{
+    margin-top: 20vh;
+}
+
+.hblogin{
+    width: 20vw;
+}
+
+.hbconta{
+    width: 10vw;
+    margin-bottom: 3vh;
+}
+
+.ctautor {
+    margin-top: 40vh;
+}
+
+.cthashtag {
+    margin-top: 20vh;
+}
+
+.loggedas{
+    font-size: 1.3vh;
+} 
+
+@media screen and (min-width: 1400px) {
+    .cursos{
+        width: 290px;
+        height: 38px;
+    }
+
+    .epforms{
+        width: 157px;
+        height: 90px;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+    .cursos{
+        width: 250px;
+        height: 38px;
+    }
+}
+
+@media screen and (min-width: 380px) and (max-width: 1199px){
+    .cursos{
+        width: 200px;
+        height: 38px;   
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+    .botoesperfil{
+        width: 85px!important;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .comtitle{
+        margin-left: 0!important;
+    }
+
+    .cardposts{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 910px){
+    .hblogin{
+        width: 182px;
+        height: 31px;
+    }
+
+    .hbconta{
+        width: 91px;
+        height: 31px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .htlogin{
+        margin-top: 15vh;
+    }
+
+    .ctautor {
+        margin-top: 20vh;
+    }
+}
+
+@media screen and (max-width: 415px){
+    .postautor{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .epfile{
+        font-size: 3.5vw;
+    }
+}
+
+@media screen and (max-width: 379px){
+    .cursos{
+        width: 136px;
+        height: 62px;
+    }
+}
+
+@media screen and (max-width: 370px){
+    .htconta{
+        margin-top: 15vh;   
+    }
+}
+
+@media screen and (max-width: 360px){
+    .titulos{
+        margin-top: 18vh;
+    }
+}

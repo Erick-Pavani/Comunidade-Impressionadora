@@ -1,0 +1,90 @@
+{% extends 'perfil.html' %}
+
+{% block form_editar_perfil %}
+<script>
+    window.onload = function () {
+        window.scrollTo(0, 10000);
+    };
+</script>
+<div class="row">
+    <div class="col">
+        <legend> Edite o seu perfil </legend>
+        <form method="POST" action="" class="border border-primary p-4 mt-2 mb-4" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            <fieldset>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                    {{ form.username(class="form-control is-invalid",
+                    style="background: #403d3d; border: #403d3d; color: white;") }}
+                    <div class="invalid-feedback">
+                        {% for erro in form.username.errors %}
+                        {{ erro }}
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.username(class="form-control", placeholder="Digite o seu novo usuário aqui!",
+                    style="background: #403d3d; border: #403d3d; color: white;") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label mt-2") }}
+
+                    {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid",
+                    style="background: #403d3d; border: #403d3d; color: white;") }}
+                    <div class="invalid-feedback">
+                        {% for erro in form.email.errors %}
+                        {{ erro }}
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.email(class="form-control", placeholder="Digite o seu novo email aqui!",
+                    style="background: #403d3d; border: #403d3d; color: white;") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.foto_perfil.label(class="form-control-label mt-4") }}
+                    {{ form.foto_perfil(class = "form-control-file ms-1 mt-2 epfile", style = "color: gold;")
+                    }}
+                    {% if form.foto_perfil.errors %}
+                    {% for erro in form.foto_perfil.errors %}
+                    <span class="text-danger">
+                        {{ erro }}
+                    </span><br>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <hr>
+                <p>
+                    Cursos
+                </p>
+                <ul class="d-flex list-unstyled">
+                    <div class="row">
+                        {% for campo in form %}
+                        {% if 'curso_' in campo.name %}
+                        <div class="col-lg-2">
+                            <center>
+                                <li>
+                                    <div class="form-group border border-primary p-2 epforms">
+                                        {{ campo.label(class="form-check-label") }}
+                                        {{ campo(class="form-check-input") }}
+                                    </div>
+                                </li>
+                            </center>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </ul>
+            </fieldset>
+            <div>
+                <center>
+                    {{ form.botao_editar_perfil(class="btn btn-outline-primary mt-3") }}
+                </center>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

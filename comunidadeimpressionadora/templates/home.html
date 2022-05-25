@@ -3,28 +3,81 @@
 
 <div class="container" style="text-align: center;">
     {% if not current_user.is_authenticated %}
-    <h1 style="color: #8059d4;">Bem vindo à Comunidade Impressionadora!</h1>
-    <h3 class="text-info" style="margin-top: 15%;">Você gostaria de fazer parte desse incrível grupo de pessoas e
-        aproveitar tudo que
-        essa comunidade
-        tem a oferecer?</h3>
-    <div class="button mt-2">
-        <center>
-            <a href="{{ url_for('login') }}"><button class="btn btn-sm btn-outline-info mt-5" style="width: 20%">Faça
-                    Login</button></a>
-        </center>
-    </div>
-    <h6 class="text-warning" style="margin-top: 12%;">Ainda não possui uma conta? Não tem problema, crie uma! É grátis!
+    <h1 style="color: #8059d4;">
+        Bem vindo à Comunidade Impressionadora!
+    </h1>
+    <h3 class="text-info htlogin">
+        Você gostaria de fazer parte desse incrível grupo de pessoas e aproveitar tudo que essa comunidade tem a
+        oferecer?
+    </h3>
+    <center>
+        <a href="{{ url_for('login') }}">
+            <button class="btn btn-sm btn-outline-info mt-sm-5 mt-2 hblogin">
+                Faça Login
+            </button>
+        </a>
+    </center>
+    <h6 class="text-warning htconta">
+        Ainda não possui uma conta? Não tem problema, crie uma! É grátis!
     </h6>
-    <div class="button mt-2">
-        <center>
-            <a href="{{ url_for('login') }}"><button class="btn btn-sm btn-outline-warning mt-3"
-                    style="width: 12%">Criar
-                    Conta</button></a>
-        </center>
-    </div>
+    <center>
+        <a href="{{ url_for('login') }}">
+            <button class="btn btn-sm btn-outline-warning mt-2 hbconta">
+                Criar Conta
+            </button>
+        </a>
+    </center>
     {% else %}
-    <h1 style="color: #8059d4;">Olá, {{ current_user.username }} !</h1>
+    <div class="row">
+        <div class="col-lg-10 col-12">
+            <h1 class="comtitle" style="color: #8059d4;">
+                Comunidade Impressionadora
+            </h1>
+            <h4 class="text-info comtitle">
+                Alunos, Experts e Profissionais da Hashtag em um só lugar!
+            </h4>
+        </div>
+        <div class="col-lg-2 col-12 mt-lg-0 mt-1">
+            <p class="loggedas" style="color: #8059d4;">
+                Você está logado como
+                <span class="text-warning">
+                    {{ current_user.username }}
+                </span> !
+            </p>
+        </div>
+    </div>
+    <div class="row mt-lg-3">
+        <hr class="w-100 text-info">
+    </div>
+    <div class="row justify-content-center">
+        {% for post in posts %}
+        <div class="card p-3 cardposts mb-4">
+            <a href="{{ url_for('exibir_post', post_id = post.id) }}" style="text-decoration: none">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename = 'fotos_perfil/{}'.format(post.autor.foto_perfil)) }}"
+                                class="rounded img-fluid">
+                        </div>
+                        <div class="text-warning">
+                            <center>
+                                {{ post.autor.username }}
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <h3 class="cardpoststitle text-warning mb-3">
+                            {{ post.titulo }}
+                        </h3>
+                        <p class="text-info">
+                            {{ post.corpo }}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
     {% endif %}
 </div>
 

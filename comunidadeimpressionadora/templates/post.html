@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container" style="text-align: center; margin-top: 15vh!important;">
+    <div class="row justify-content-center">
+        <div class="card p-3 cardposts mb-4">
+            {% if form %}
+            <div class="row mb-2">
+                <small class="text-success cardpostsdate fs-sm-4 fs-5">
+                    {{ post.data_criacao.strftime('%d/%m/%Y') }}
+                    - <span>
+                        <a href="#Editar_Post" class="text-info" style="text-decoration: none;">
+                            Editar Post
+                        </a>
+                    </span>
+                    /
+                    <span>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#ModalExcluirPost" class="text-danger"
+                            style="text-decoration: none;">
+                            Excluir Post
+                        </a>
+                    </span>
+                </small>
+                <hr class="text-bg-info text-info mt-2" style="height: 2px;">
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-3">
+                    <div class="image">
+                        <img src="{{ url_for('static', filename = 'fotos_perfil/{}'.format(post.autor.foto_perfil)) }}"
+                            class="rounded img-fluid">
+                    </div>
+                    <div class="text-warning postautor">
+                        <center>
+                            {{ post.autor.username }}
+                        </center>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <h3 class="cardpoststitle text-warning mb-3">
+                        {{ post.titulo }}
+                    </h3>
+                    <p class="text-info">
+                        {{ post.corpo }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if form %}
+<div class="container text-info">
+    <div class="row" id="Editar_Post">
+        <center>
+            <h1>Editar Post</h1>
+        </center>
+    </div>
+    <div class="row">
+        <div class="col">
+            <legend> Edite o seu post! </legend>
+            <form method="POST" action="" class="border border-info p-4 mt-2 mb-4">
+                {{ form.csrf_token }}
+                <fieldset>
+                    <div class="form-group">
+                        {{ form.titulo.label(class="form-control-label") }}
+
+                        {% if form.titulo.errors %}
+                        {{ form.titulo(class="form-control is-invalid",
+                        style="background: #403d3d; border: #403d3d; color: white;") }}
+                        <div class="invalid-feedback">
+                            {% for erro in form.titulo.errors %}
+                            {{ erro }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.titulo(class="form-control", placeholder="Novo título do post",
+                        style="background: #403d3d; border: #403d3d; color: white;") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group mt-3">
+                        {{ form.corpo.label(class="form-control-label") }}
+
+                        {% if form.corpo.errors %}
+                        {{ form.corpo(class="form-control is-invalid",
+                        style="background: #403d3d; border: #403d3d; color: white;") }}
+                        <div class="invalid-feedback">
+                            {% for erro in form.corpo.errors %}
+                            {{ erro }}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.corpo(class="form-control", placeholder="Novo texto do post",
+                        style="background: #403d3d; border: #403d3d; color: white;") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <center>
+                    {{ form.botao_criar_post(class = "btn btn-outline-info mt-3") }}
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<!-- Modal -->
+<div class="modal mt-5 fade" id="ModalExcluirPost" tabindex="-1" aria-labelledby="TituloModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="TituloModal">Deseja realmente excluir esse post?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-warning">
+                Ao excluir esse post você assume estar ciente de que essa operação é definitiva e não pode ser
+                revertida!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Voltar</button>
+                <form action="{{ url_for('excluir_post', post_id = post.id) }}" method="POST">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,12 +1,81 @@
 {% extends 'base.html' %}
 {% block body %}
-    
-    <div class="container">
-        <h1>Usuários</h1>
+
+<div class="container mb-5" style="text-align: center;">
+    <h1>Usuários</h1>
+    <div class="row justify-content-center">
         {% for usuario in lista_usuarios %}
-           {{ usuario }}<br>
-           <hr>
+        <div class="col-lg-6 col-md-8 mt-5">
+            <div class="card p-3 cardprofiles">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename = 'fotos_perfil/{}'.format(usuario.foto_perfil)) }}"
+                                class="rounded img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 mt-5">
+                        <h4 class="text-info">
+                            {{ usuario.username }}
+                        </h4>
+                        <span class="text-info">
+                            {{ usuario.email }}
+                        </span>
+                        <div class="p-2 mt-3 d-flex justify-content-center text-white">
+                            <div class="d-flex flex-column me-5">
+                                <span class="points">
+                                    Posts
+                                </span>
+                                <span class="number">
+                                    {{ usuario.posts | length }}
+                                </span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="points">
+                                    Cursos
+                                </span>
+                                <span class="number">
+                                    {% if usuario.cursos.count(';') > 0 %}
+                                    {{ usuario.cursos.count(';') + 1 }}
+                                    {% else %}
+                                    0
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-info">
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+                            <h5 class="text-info">
+                                Cursos
+                            </h5>
+                        </center>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-self-center p-1">
+                    {% if usuario.cursos.count(';') == 0 %}
+                    <div class="col-12">
+                        <button type="button" class="btn btn-outline-warning mt-2 cursos" disabled>
+                            {{ usuario.cursos }}
+                        </button>
+                    </div>
+                    {% else %}
+                    {% for curso in usuario.cursos.split(';') %}
+                    <div class="col-md-6 col-12">
+                        <button type="button" class="btn btn-outline-warning mt-2 cursos" disabled>
+                            {{ curso }}
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
         {% endfor%}
     </div>
+</div>
 
 {% endblock %}

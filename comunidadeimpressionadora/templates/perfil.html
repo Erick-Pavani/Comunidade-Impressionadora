@@ -1,39 +1,113 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<center>
+<div class="container mb-5" style="text-align: center;">
     <h1>Meu Perfil</h1>
-</center>
-<div class="container mt-5 d-flex justify-content-center w-75">
-    <div class="card p-3" style="width: 55%;">
-        <div class="d-flex align-items-center">
-            <div class="image pe-3">
-                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                    class="rounded" width="200">
-            </div>
-            <div class="ms-2">
-                <center>
-                    <h4 class="mb-0 mt-0 text-info">{{ current_user.username }}</h4>
-                </center>
-                <center>
-                    <span class="me-0 text-info">{{ current_user.email }}</span>
-                </center>
-                <div class="p-2 mt-3 d-flex justify-content-between rounded text-white stats">
-                    <div class="d-flex flex-column">
-                        <span class="points">Posts</span>
-                        <span class="number">0</span>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-8 mt-5">
+            <div class="card p-3 cardprofiles">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="image">
+                            <img src="{{ foto_perfil }}" class="rounded img-fluid">
+                        </div>
                     </div>
-                    <div class="d-flex flex-column">
-                        <span class="points">Cursos</span>
-                        <span class="number">0</span>
+                    <div class="col-md-6 col-12 mt-3 mt-md-0">
+                        <h4 class="text-info">
+                            {{ current_user.username }}
+                        </h4>
+                        <span class="me-0 text-info">
+                            {{ current_user.email }}
+                        </span>
+                        <div class="p-2 mt-3 d-flex justify-content-center text-white">
+                            <div class="d-flex flex-column me-5">
+                                <span class="points">
+                                    Posts
+                                </span>
+                                <span class="number">
+                                    {{ current_user.posts | length }}
+                                </span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="points">
+                                    Cursos
+                                </span>
+                                <span class="number">
+                                    {% if current_user.cursos.count(';') > 0 %}
+                                    {{ current_user.cursos.count(';') + 1 }}
+                                    {% else %}
+                                    0
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="button mt-2 d-flex flex-row align-items-center">
+                            <a class="btn btn-sm btn-outline-info w-100 mt-4 me-2 botoesperfil"
+                                href=" {{ url_for('editar_perfil') }} ">
+                                Editar Perfil
+                            </a>
+                            <a class="btn btn-sm btn-outline-danger w-100 mt-4 botoesperfil" href="#"
+                                data-bs-toggle="modal" data-bs-target="#ModalExcluirUser">
+                                Excluir Perfil
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="button mt-2 d-flex flex-row align-items-center">
-                    <button class="btn btn-sm btn-outline-info w-100 mt-4">Editar Perfil</button>
+                <hr class="text-info mt-2">
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+                            <h5 class="text-info">
+                                Cursos
+                            </h5>
+                        </center>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-self-center">
+                    {% if current_user.cursos.count(';') == 0 %}
+                    <div class="col-12">
+                        <button type="button" class="btn btn-outline-warning mt-2 cursos" disabled>
+                            {{ current_user.cursos }}
+                        </button>
+                    </div>
+                    {% else %}
+                    {% for curso in current_user.cursos.split(';') %}
+                    <div class="col-md-6 col-12">
+                        <button type="button" class="btn btn-outline-warning mt-2 cursos" disabled>
+                            {{ curso }}
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal mt-5 fade" id="ModalExcluirUser" tabindex="-1" aria-labelledby="TituloModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="TituloModal">Deseja realmente excluir seu usuário?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-warning">
+                Ao excluir seu usuário você assume estar ciente de que essa operação é definitiva e não pode ser
+                revertida!
+                PS: Todos os seus posts também serão excluídos da nossa plataforma!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Voltar</button>
+                <a href="{{ url_for('excluir_user') }}">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block form_editar_perfil %}
+{% endblock %}
 {% endblock %}

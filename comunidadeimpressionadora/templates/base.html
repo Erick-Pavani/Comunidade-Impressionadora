@@ -51,14 +51,14 @@
             {% with mensagens = get_flashed_messages(with_categories=True) %}
             {% if mensagens %}
             {% for categoria, mensagem in mensagens %}
-            <div class="alert {{ categoria }} mt-2" id="msg">
+            <div class="alert {{ categoria }} titulos" id="msg">
                 {{ mensagem }}
             </div>
             {% endfor %}
             {% endif %}
             {% endwith %}
         </div>
-        <div class="container mt-3">
+        <div class="container titulos">
             {% block body %}
             {% endblock %}
         </div>
