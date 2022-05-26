@@ -32,7 +32,7 @@ class FormCriarConta(FlaskForm):
 class FormEditarPerfil(FlaskForm):
     username = StringField('Novo nome do usuário', validators = [DataRequired(message = "Digite um nome de usuário!")])
     email = StringField('Novo e-mail', validators = [DataRequired(message = "Digite um email!"), Email(message = "Digite um email válido!")])
-    foto_perfil = FileField('Atualizar foto de perfil', validators = [FileAllowed(['jpg', 'png'], message = "Somente arquivos no formato '.jpg' e '.png' são aceitos!")])
+    foto_perfil = FileField('Atualizar foto de perfil', validators = [FileAllowed(['jpg', 'png', 'jpeg'], message = "Somente arquivos no formato '.jpg' e '.png' são aceitos!")])
     curso_excel = BooleanField('Excel Impressionador')
     curso_powerbi = BooleanField('PowerBI Impressionador')
     curso_vba = BooleanField('VBA Impressionador')
