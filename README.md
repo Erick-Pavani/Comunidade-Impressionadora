@@ -13,7 +13,7 @@
 - Python com o framework Flask
 - Banco de dados PostgreSQL
 
-## O site consiste numa rede social feita para todos os alunos e profissionais dos cursos da Hashtag Treinamentos, nele é possível:
+## O site consiste numa rede social feita para todos os alunos e profissionais dos cursos da Hashtag Treinamentos, além disso é 100% responsivo sendo possível usá-lo em dispositivos de quaisquer tamanho de tela. No site é possível:
 - Criar o seu usuário
 - Fazer login e logout
 - Editar o seu usuário: nome, foto de perfil, email e cursos
@@ -23,4 +23,4 @@
 - Editar e excluir os posts que você tenha feito (clique no post na home page)
 - Ver as minhas informações de contato (link para o meu site pessoal com todas as minhas informações)
 - Link para o site da Hashtag Treinamentos
-## PS: O site é 100% responsivo, é possível utilizá-lo com qualquer dispositivo seja smartphone ou desktop, etc...
+## PS: O site está hospedado gratuitamente no Heroku, o que faz com que o site seja periódicamente (geralmente diariamente) "resetado" para somente seus arquivos originais de quando o deploy para o Heroku foi feito. Por isso todos os perfis depois de um tempo de sua criação ficarão sem foto de perfil (se o usuário tiver mudado a foto padrão ao criar a conta). Os posts serão mantidos!
