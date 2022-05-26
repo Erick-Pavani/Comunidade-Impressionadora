@@ -23,4 +23,4 @@
 - Editar e excluir os posts que você tenha feito (clique no post na home page)
 - Ver as minhas informações de contato (link para o meu site pessoal com todas as minhas informações)
 - Link para o site da Hashtag Treinamentos
-## PS: O site está hospedado gratuitamente no Heroku, e o próprio serviço deles remove periódicamente as fotos de novos usuários do banco (por ser um serviço gratuito), portanto, infelizmente alguns perfis ficarão com problemas na foto de usuário algum tempo depois de criados!
+## PS: O site está hospedado gratuitamente no Heroku, o que faz com que o site seja periódicamente (geralmente diariamente) "resetado" para somente seus arquivos originais de quando o deploy para o Heroku foi feito. Por isso todos os perfis depois de um tempo de sua criação ficarão sem foto de perfil (se o usuário tiver mudado a foto padrão ao criar a conta). Os posts serão mantidos!
