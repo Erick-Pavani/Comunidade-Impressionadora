@@ -13,7 +13,7 @@
 - Python com o framework Flask
 - Banco de dados PostgreSQL
 
-## O site consiste numa rede social feita para todos os alunos e profissionais dos cursos da Hashtag Treinamentos, além disso é 100$ responsivo sendo possível usá-lo em dispositivos de quaisquer tamanho de tela. No site é possível:
+## O site consiste numa rede social feita para todos os alunos e profissionais dos cursos da Hashtag Treinamentos, além disso é 100% responsivo sendo possível usá-lo em dispositivos de quaisquer tamanho de tela. No site é possível:
 - Criar o seu usuário
 - Fazer login e logout
 - Editar o seu usuário: nome, foto de perfil, email e cursos
