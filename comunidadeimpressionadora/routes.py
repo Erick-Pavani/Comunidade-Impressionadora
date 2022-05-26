@@ -90,8 +90,16 @@ def perfil():
 @app.route('/perfil/editar', methods = ['GET', 'POST'])
 @login_required
 def editar_perfil():
-    form = FormEditarPerfil()
-    if form.validate_on_submit():
+    form = FormEditarPerfil() 
+    if request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        for curso in current_user.cursos.split(';'):
+            for campo in form:
+                if curso in campo.label.text:
+                    campo.data = True
+                    break
+    elif form.validate_on_submit():
         current_user.username = form.username.data
         current_user.email = form.email.data
         if form.foto_perfil.data:
@@ -99,11 +107,8 @@ def editar_perfil():
         current_user.cursos = atualizar_cursos(form)
         database.session.commit()
         flash('Seu perfil foi atualizado com sucesso!', 'alert-success')
-        
         return redirect(url_for('perfil'))
-
     foto_perfil = url_for('static', filename = f'fotos_perfil/{current_user.foto_perfil}')
-    
     return render_template('editar_perfil.html', foto_perfil = foto_perfil, form = form)
 
 # Exibir Post

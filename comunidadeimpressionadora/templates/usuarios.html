@@ -35,10 +35,12 @@
                                     Cursos
                                 </span>
                                 <span class="number">
-                                    {% if usuario.cursos.count(';') > 0 %}
-                                    {{ usuario.cursos.count(';') + 1 }}
-                                    {% else %}
+                                    {% if usuario.cursos == "Não informado" %}
                                     0
+                                    {% elif usuario.cursos.count(';') == 0 %}
+                                    1
+                                    {% elif usuario.cursos.count(';') > 0 %}
+                                    {{ usuario.cursos.count(';') + 1 }}
                                     {% endif %}
                                 </span>
                             </div>
