@@ -1,15 +1,15 @@
 # Comunidade Impressionadora
 ## Rede social para alunos dos cursos impressionadores da Hashtag Treinamentos
 
-### Acesse em: https://comunidade-impressionadora.herokuapp.com/
+## Acesse em: https://comunidade-impressionadora.herokuapp.com/
 
-### Desenvolvido com:
-### Front - End:
+## Desenvolvido com:
+## Front - End:
 - HTML5
 - CSS3
 - Javascript
 - Bootstrap 5
-### Back - End:
+## Back - End:
 - Python com o framework Flask
 - Banco de dados PostgreSQL
 
