@@ -1,9 +1,9 @@
-# Site Comunidade Impressionadora
-## Projeto de uma rede social para alunos do curso Python Impressionador da Hashtag Treinamentos
+# Comunidade Impressionadora
+## Rede social para alunos dos cursos impressionadores da Hashtag Treinamentos
 
-### Url para acesso: https://comunidade-impressionadora.herokuapp.com/
+### Acesse em: https://comunidade-impressionadora.herokuapp.com/
 
-### Tecnologias usadas:
+### Desenvolvido com:
 ### Front - End:
 - HTML5
 - CSS3
@@ -13,7 +13,7 @@
 - Python com o framework Flask
 - Banco de dados PostgreSQL
 
-## O site consiste numa rede social feita para todos os alunos e profissionais dos cursos da Hashtag Treinamentos, além disso é 100% responsivo sendo possível usá-lo em dispositivos de quaisquer tamanho de tela. No site é possível:
+## No site é possível:
 - Criar o seu usuário
 - Fazer login e logout
 - Editar o seu usuário: nome, foto de perfil, email e cursos
